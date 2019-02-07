@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Pong</title>
+	</head>
+	<body>
+		<div class="game-wrapper">
+			<h1>Pong</h1>
+			<div id="game"></div>
+			<svg id="game" viewBox="0 0 512 256" style="position: absolute; height: 100%; width: 100%">
+				<style>
+					#background {
+						fill: #353535;
+					}
+					#goal rect {
+						fill: white;
+					}
+					line {
+						fill:blue;
+					}
+					.pad {
+						fill: white;
+					}
+					#ball {
+						fill: white;
+					}
+				</style>
+			<rect id="background" x="0" y="0" width="512" height="256" />	
+			<g id="goal">
+
+
+					<line height="14" x1="256" y1="0" x2="256" y2="260" stroke="blue"
+					stroke-dasharray="20" style="stroke-width: 4" />
+
+					<rect x="256" y="0" width="4" height="15" />
+					<rect x="256" y="35" width="4" height="15" />
+					<rect x="256" y="70" width="4" height="15" />
+					<rect x="256" y="105" width="4" height="15" />
+					<rect x="256" y="140" width="4" height="15" />
+					<rect x="256" y="175" width="4" height="15" />
+					<rect x="256" y="210" width="4" height="15" />
+					<rect x="256" y="245" width="4" height="15" />
+
+				</g>
+
+				<rect id="pad-1" class="pad" x="18" y="100" width="8" height="56" />
+				<rect id="pad-2" class="pad" x="494" y="100" width="8" height="56" />
+				<circle id="ball" cx="256" cy="128" r="8" />
+		</svg>
+
+			<!-- Rough-out your SVG mark-up here to start... -->
+		</div>
+		<script type="text/javascript" src="build/bundle.js"></script>
+	</body>
+</html>
