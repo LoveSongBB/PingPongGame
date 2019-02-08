@@ -93,11 +93,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _styles_game_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var _styles_game_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_styles_game_css__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _partials_Game__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(11);
-/* harmony import */ var _partials_Game__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_partials_Game__WEBPACK_IMPORTED_MODULE_1__);
 
  // create a game instance
 
-var game = new _partials_Game__WEBPACK_IMPORTED_MODULE_1___default.a('game', 512, 256);
+var game = new _partials_Game__WEBPACK_IMPORTED_MODULE_1__["default"]('game', 512, 256);
 
 (function gameLoop() {
   game.render();
@@ -789,9 +788,120 @@ module.exports = function (css) {
 
 /***/ }),
 /* 11 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Game; });
+/* harmony import */ var _settings__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(12);
+/* harmony import */ var _settings__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_settings__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Board__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(13);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
+
+
+var Game =
+/*#__PURE__*/
+function () {
+  function Game(element, width, height) {
+    _classCallCheck(this, Game);
+
+    this.element = element;
+    this.width = width;
+    this.height = height;
+    this.paddleWidth = 8;
+    this.paddleheight = 56;
+    this.boardGap = 10;
+    this.gameElement = document.getElementById(element);
+    this.board = new _Board__WEBPACK_IMPORTED_MODULE_1__["default"](this.width, this.height);
+    this.player1 = new Paddle(this.height, this.paddleWidth, this.paddleheight, this.boardGap, (this.height - this.paddleheight) / 2);
+  }
+
+  _createClass(Game, [{
+    key: "render",
+    value: function render() {
+      // Empty out game element by re-rendering
+      this.gameElement.innerHTML = '';
+      var svg = document.createElementNS(_settings__WEBPACK_IMPORTED_MODULE_0__["SVG_NS"], 'svg');
+      svg.setAttributeNS(null, 'width', this.width);
+      svg.setAttributeNS(null, 'height', this.height);
+      svg.setAttributeNS(null, 'viewBox', "0 0 ".concat(this.width, " ").concat(this.height));
+      svg.setAttributeNS(null, 'version', '1.1');
+      this.gameElement.appendChild(svg);
+      this.player1.render(svg); // rendering all game elements inside the svg
+
+      this.board.render(svg);
+    }
+  }]);
+
+  return Game;
+}();
+
+
+
+/***/ }),
+/* 12 */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\Users\\bryan\\documents\\html-stuff\\pong-game-svg\\pong-game-svg\\src\\partials\\Game.js: Unexpected token (1:21)\n\n> 1 | import {SVG_NS} from `'../setting`;\n    |                      ^\n  2 | \n  3 | export default class Game {\n  4 |   constructor(element, width, height) {\n    at Parser.raise (C:\\Users\\bryan\\documents\\html-stuff\\pong-game-svg\\pong-game-svg\\node_modules\\@babel\\parser\\lib\\index.js:3831:17)\n    at Parser.unexpected (C:\\Users\\bryan\\documents\\html-stuff\\pong-game-svg\\pong-game-svg\\node_modules\\@babel\\parser\\lib\\index.js:5143:16)\n    at Parser.parseImportSource (C:\\Users\\bryan\\documents\\html-stuff\\pong-game-svg\\pong-game-svg\\node_modules\\@babel\\parser\\lib\\index.js:8574:41)\n    at Parser.parseImport (C:\\Users\\bryan\\documents\\html-stuff\\pong-game-svg\\pong-game-svg\\node_modules\\@babel\\parser\\lib\\index.js:8568:24)\n    at Parser.parseStatementContent (C:\\Users\\bryan\\documents\\html-stuff\\pong-game-svg\\pong-game-svg\\node_modules\\@babel\\parser\\lib\\index.js:7338:27)\n    at Parser.parseStatement (C:\\Users\\bryan\\documents\\html-stuff\\pong-game-svg\\pong-game-svg\\node_modules\\@babel\\parser\\lib\\index.js:7248:17)\n    at Parser.parseBlockOrModuleBlockBody (C:\\Users\\bryan\\documents\\html-stuff\\pong-game-svg\\pong-game-svg\\node_modules\\@babel\\parser\\lib\\index.js:7812:25)\n    at Parser.parseBlockBody (C:\\Users\\bryan\\documents\\html-stuff\\pong-game-svg\\pong-game-svg\\node_modules\\@babel\\parser\\lib\\index.js:7799:10)\n    at Parser.parseTopLevel (C:\\Users\\bryan\\documents\\html-stuff\\pong-game-svg\\pong-game-svg\\node_modules\\@babel\\parser\\lib\\index.js:7181:10)\n    at Parser.parse (C:\\Users\\bryan\\documents\\html-stuff\\pong-game-svg\\pong-game-svg\\node_modules\\@babel\\parser\\lib\\index.js:8660:17)\n    at parse (C:\\Users\\bryan\\documents\\html-stuff\\pong-game-svg\\pong-game-svg\\node_modules\\@babel\\parser\\lib\\index.js:10643:38)\n    at parser (C:\\Users\\bryan\\documents\\html-stuff\\pong-game-svg\\pong-game-svg\\node_modules\\@babel\\core\\lib\\transformation\\normalize-file.js:170:34)\n    at normalizeFile (C:\\Users\\bryan\\documents\\html-stuff\\pong-game-svg\\pong-game-svg\\node_modules\\@babel\\core\\lib\\transformation\\normalize-file.js:138:11)\n    at runSync (C:\\Users\\bryan\\documents\\html-stuff\\pong-game-svg\\pong-game-svg\\node_modules\\@babel\\core\\lib\\transformation\\index.js:44:43)\n    at runAsync (C:\\Users\\bryan\\documents\\html-stuff\\pong-game-svg\\pong-game-svg\\node_modules\\@babel\\core\\lib\\transformation\\index.js:35:14)\n    at process.nextTick (C:\\Users\\bryan\\documents\\html-stuff\\pong-game-svg\\pong-game-svg\\node_modules\\@babel\\core\\lib\\transform.js:34:34)\n    at processTicksAndRejections (internal/process/next_tick.js:74:9)");
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\Users\\bryan\\documents\\html-stuff\\pong-game-svg\\pong-game-svg\\src\\settings.js: Unexpected token (4:7)\n\n  2 | \n  3 | export const KEYS = {\n> 4 |     a: ??,        // player 1 up key\n    |        ^\n  5 |     z: ??,        // player 1 down key\n  6 |     up: ??,       // player 2 up key\n  7 |     down: ??,     // player 2 down key\n    at Parser.raise (C:\\Users\\bryan\\documents\\html-stuff\\pong-game-svg\\pong-game-svg\\node_modules\\@babel\\parser\\lib\\index.js:3831:17)\n    at Parser.unexpected (C:\\Users\\bryan\\documents\\html-stuff\\pong-game-svg\\pong-game-svg\\node_modules\\@babel\\parser\\lib\\index.js:5143:16)\n    at Parser.parseExprAtom (C:\\Users\\bryan\\documents\\html-stuff\\pong-game-svg\\pong-game-svg\\node_modules\\@babel\\parser\\lib\\index.js:6283:20)\n    at Parser.parseExprSubscripts (C:\\Users\\bryan\\documents\\html-stuff\\pong-game-svg\\pong-game-svg\\node_modules\\@babel\\parser\\lib\\index.js:5862:23)\n    at Parser.parseMaybeUnary (C:\\Users\\bryan\\documents\\html-stuff\\pong-game-svg\\pong-game-svg\\node_modules\\@babel\\parser\\lib\\index.js:5842:21)\n    at Parser.parseExprOps (C:\\Users\\bryan\\documents\\html-stuff\\pong-game-svg\\pong-game-svg\\node_modules\\@babel\\parser\\lib\\index.js:5729:23)\n    at Parser.parseMaybeConditional (C:\\Users\\bryan\\documents\\html-stuff\\pong-game-svg\\pong-game-svg\\node_modules\\@babel\\parser\\lib\\index.js:5702:23)\n    at Parser.parseMaybeAssign (C:\\Users\\bryan\\documents\\html-stuff\\pong-game-svg\\pong-game-svg\\node_modules\\@babel\\parser\\lib\\index.js:5647:21)\n    at Parser.parseObjectProperty (C:\\Users\\bryan\\documents\\html-stuff\\pong-game-svg\\pong-game-svg\\node_modules\\@babel\\parser\\lib\\index.js:6730:101)\n    at Parser.parseObjPropValue (C:\\Users\\bryan\\documents\\html-stuff\\pong-game-svg\\pong-game-svg\\node_modules\\@babel\\parser\\lib\\index.js:6755:101)\n    at Parser.parseObj (C:\\Users\\bryan\\documents\\html-stuff\\pong-game-svg\\pong-game-svg\\node_modules\\@babel\\parser\\lib\\index.js:6670:12)\n    at Parser.parseExprAtom (C:\\Users\\bryan\\documents\\html-stuff\\pong-game-svg\\pong-game-svg\\node_modules\\@babel\\parser\\lib\\index.js:6229:21)\n    at Parser.parseExprSubscripts (C:\\Users\\bryan\\documents\\html-stuff\\pong-game-svg\\pong-game-svg\\node_modules\\@babel\\parser\\lib\\index.js:5862:23)\n    at Parser.parseMaybeUnary (C:\\Users\\bryan\\documents\\html-stuff\\pong-game-svg\\pong-game-svg\\node_modules\\@babel\\parser\\lib\\index.js:5842:21)\n    at Parser.parseExprOps (C:\\Users\\bryan\\documents\\html-stuff\\pong-game-svg\\pong-game-svg\\node_modules\\@babel\\parser\\lib\\index.js:5729:23)\n    at Parser.parseMaybeConditional (C:\\Users\\bryan\\documents\\html-stuff\\pong-game-svg\\pong-game-svg\\node_modules\\@babel\\parser\\lib\\index.js:5702:23)\n    at Parser.parseMaybeAssign (C:\\Users\\bryan\\documents\\html-stuff\\pong-game-svg\\pong-game-svg\\node_modules\\@babel\\parser\\lib\\index.js:5647:21)\n    at Parser.parseVar (C:\\Users\\bryan\\documents\\html-stuff\\pong-game-svg\\pong-game-svg\\node_modules\\@babel\\parser\\lib\\index.js:7882:26)\n    at Parser.parseVarStatement (C:\\Users\\bryan\\documents\\html-stuff\\pong-game-svg\\pong-game-svg\\node_modules\\@babel\\parser\\lib\\index.js:7711:10)\n    at Parser.parseStatementContent (C:\\Users\\bryan\\documents\\html-stuff\\pong-game-svg\\pong-game-svg\\node_modules\\@babel\\parser\\lib\\index.js:7307:21)\n    at Parser.parseStatement (C:\\Users\\bryan\\documents\\html-stuff\\pong-game-svg\\pong-game-svg\\node_modules\\@babel\\parser\\lib\\index.js:7248:17)\n    at Parser.parseExportDeclaration (C:\\Users\\bryan\\documents\\html-stuff\\pong-game-svg\\pong-game-svg\\node_modules\\@babel\\parser\\lib\\index.js:8414:17)\n    at Parser.maybeParseExportDeclaration (C:\\Users\\bryan\\documents\\html-stuff\\pong-game-svg\\pong-game-svg\\node_modules\\@babel\\parser\\lib\\index.js:8363:31)\n    at Parser.parseExport (C:\\Users\\bryan\\documents\\html-stuff\\pong-game-svg\\pong-game-svg\\node_modules\\@babel\\parser\\lib\\index.js:8292:29)\n    at Parser.parseStatementContent (C:\\Users\\bryan\\documents\\html-stuff\\pong-game-svg\\pong-game-svg\\node_modules\\@babel\\parser\\lib\\index.js:7344:27)\n    at Parser.parseStatement (C:\\Users\\bryan\\documents\\html-stuff\\pong-game-svg\\pong-game-svg\\node_modules\\@babel\\parser\\lib\\index.js:7248:17)\n    at Parser.parseBlockOrModuleBlockBody (C:\\Users\\bryan\\documents\\html-stuff\\pong-game-svg\\pong-game-svg\\node_modules\\@babel\\parser\\lib\\index.js:7812:25)\n    at Parser.parseBlockBody (C:\\Users\\bryan\\documents\\html-stuff\\pong-game-svg\\pong-game-svg\\node_modules\\@babel\\parser\\lib\\index.js:7799:10)\n    at Parser.parseTopLevel (C:\\Users\\bryan\\documents\\html-stuff\\pong-game-svg\\pong-game-svg\\node_modules\\@babel\\parser\\lib\\index.js:7181:10)\n    at Parser.parse (C:\\Users\\bryan\\documents\\html-stuff\\pong-game-svg\\pong-game-svg\\node_modules\\@babel\\parser\\lib\\index.js:8660:17)");
+
+/***/ }),
+/* 13 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Board; });
+/* harmony import */ var _settings__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(12);
+/* harmony import */ var _settings__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_settings__WEBPACK_IMPORTED_MODULE_0__);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
+
+var Board =
+/*#__PURE__*/
+function () {
+  function Board(width, height) {
+    _classCallCheck(this, Board);
+
+    this.width = width;
+    this.height = height;
+  }
+
+  _createClass(Board, [{
+    key: "render",
+    value: function render(svg) {
+      var rect = document.createElementNS(_settings__WEBPACK_IMPORTED_MODULE_0__["SVG_NS"], 'rect');
+      rect.setAttributeNS(null, 'width', this.width);
+      rect.setAttributeNS(null, 'height', this.height);
+      rect.setAttributeNS(null, 'fill', '#353535');
+      rect.setAttributeNS(null, 'stroke', '#000000');
+      var line = document.createElementNS(_settings__WEBPACK_IMPORTED_MODULE_0__["SVG_NS"], 'line');
+      line.setAttributeNS(null, 'x1', this.width / 2);
+      line.setAttributeNS(null, 'x2', this.width / 2);
+      line.setAttributeNS(null, 'y1', "0");
+      line.setAttributeNS(null, 'y2', this.height);
+      line.setAttributeNS(null, 'stroke', 'white');
+      line.setAttributeNS(null, 'stroke-dasharray', '20, 15');
+      line.setAttributeNS(null, 'stroke-width', '4');
+      svg.appendChild(rect);
+      svg.appendChild(line);
+    }
+  }]);
+
+  return Board;
+}();
+
+
 
 /***/ })
 /******/ ]);
