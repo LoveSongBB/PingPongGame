@@ -9,9 +9,7 @@ export default class Ball {
         this.boardWidth = boardWidth;
         this.boardHeight = boardHeight;
         this.direction = 1;
-        this.ping = new Audio("public/sounds/pong-01.wav");
-        
-        // x and y cords for reset (center)
+        this.ping = new Audio("public/sounds/pong-01.wav"); 
         this.reset();
     }
     
@@ -84,8 +82,6 @@ export default class Ball {
                goal(player) {
                    player.score++;
                    this.reset();
-                  //increase score by 1
-                   // reset in the middle
             }
             
             
@@ -118,9 +114,6 @@ export default class Ball {
                      this.goal(player2)
                      this.direction = 1; 
                  }
-            
-
-
             }
         }
         

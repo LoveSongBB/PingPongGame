@@ -18,9 +18,7 @@ export default class Paddle {
             break;
         }
       });
-    
     }
-    //...
 
     coordinates(x, y, width, height) {
       let leftX = x;
@@ -34,14 +32,10 @@ up(){
 this.y =  Math.max(0, this.y - this.speed);
 }
 
-
-
 down(){
 
 this.y = Math.min(this.y + this.speed, this.boardHeight - this.height); 
-
 }
-
 
 render(svg){
     let rect = document.createElementNS(SVG_NS, 'rect');
@@ -53,7 +47,4 @@ render(svg){
     
     svg.appendChild(rect);
 
-
-
-}
-  }
+}}
